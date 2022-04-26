@@ -3,4 +3,22 @@
   <groupId>ar.edu.utn.frba.cursolink</groupId>
   <artifactId>correlativas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  
+  	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.5.2</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+  
 </project>
