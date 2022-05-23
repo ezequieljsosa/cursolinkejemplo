@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ejemplo lista materias</title>
+</head>
+<body>
+<h3>Lista de materias</h3>
+<ol>
+    <li th:each="materia : ${lista_materias}"  >
+        <span th:text="${materia.nombre}">MateriaX</span>
+        <span th:text="${materia.anio}">N</span>
+    </li>
+</ol>
+
+Nueva Materia
+<form th:action="@{/materia/}" method="post">
+    Nombre <input type="text" name="nombre" />
+    Año <input type="text" name="anio" />
+<input type="submit" />
+</form>
+
+</body>
+</html>
