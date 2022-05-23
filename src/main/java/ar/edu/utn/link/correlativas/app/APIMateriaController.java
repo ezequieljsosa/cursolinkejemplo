@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import ar.edu.utn.link.correlativas.model.Materia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,11 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.domain.Pageable;
 
-import ar.edu.utn.link.correlativas.model.Materia;
-
 @RestController
-@RequestMapping("/materias")
-public class MateriaController {
+@RequestMapping("api/materias")
+public class APIMateriaController {
 	
 	@Autowired
 	private RepoMateriaMem repo;
