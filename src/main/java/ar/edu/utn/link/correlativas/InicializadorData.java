@@ -25,6 +25,7 @@ public class InicializadorData implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
+//		config.getProjectionConfiguration().addProjection(AlumnoDTO2.class);
 		config.exposeIdsFor(Materia.class);
 		if (repo.count() == 0) { 
 			List.of( new Materia("Algoritmos",2022), new Materia("Sintaxis",2021),  
