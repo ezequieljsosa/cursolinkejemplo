@@ -1,20 +1,26 @@
 package ar.edu.utn.link.correlativas.app;
 
-import java.util.Collection;
+import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import ar.edu.utn.link.correlativas.model.Materia;
 
 
-public interface RepoMateria {
+@Qualifier("jpa2")
+public interface RepoMateria extends PagingAndSortingRepository<Materia, Integer> {
 
-	public Collection<Materia> all();
-
-	public Materia findByName(String nombreMateria);
-
-	public Collection<Materia> findByYear(Integer anio) ;
-
-	public void save( Materia materia) throws MateriaRepetidaException ;
+	List<Materia> findAll();
+	Materia findByNombre(String nombre);
+	
+	Page<Materia> findByAnio(Integer anio,Pageable pageable);
+	
+	
+	@SuppressWarnings("unchecked")
+	Materia save(Materia m) throws MateriaRepetidaException;
 	
 }

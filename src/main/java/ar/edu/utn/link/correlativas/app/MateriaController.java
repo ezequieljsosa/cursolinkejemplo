@@ -1,12 +1,12 @@
 package ar.edu.utn.link.correlativas.app;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,6 +27,7 @@ import ar.edu.utn.link.correlativas.model.Materia;
 public class MateriaController {
 
 	@Autowired
+	@Qualifier("jpa2")
 	private RepoMateria repo;
 
 
@@ -42,19 +43,16 @@ public class MateriaController {
 
 		if (anio == null) {
 
-			List<Materia> all = new ArrayList<>(repo.all());
-
-			int fromIndex = page.getPageNumber() * page.getPageSize();
-			return new PageImpl<Materia>(all.subList(fromIndex, fromIndex + page.getPageSize()), page, all.size());
+			return repo.findAll(page);
 		} else {
-			return new PageImpl<Materia>(new ArrayList<>(repo.findByYear(anio)));
+			return repo.findByAnio(anio,page);
 		}
 
 	}
 
 	@GetMapping("/{nombre}")
 	public Materia get(@PathVariable("nombre") String nombreMateria) {
-		return repo.findByName(nombreMateria);
+		return repo.findByNombre(nombreMateria);
 	}
 
 	@PostMapping("")

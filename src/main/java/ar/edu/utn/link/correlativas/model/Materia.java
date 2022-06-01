@@ -3,6 +3,11 @@ package ar.edu.utn.link.correlativas.model;
 import java.util.Collection;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -11,16 +16,31 @@ import javax.validation.constraints.NotBlank;
 
 
 
+@Entity
 public class Materia {
+	
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
 	@NotBlank
 	private String nombre;
 
 	@Min(2000)
 	private Integer anio;
+	
+	
+	@Transient
 	private Collection<Materia> correlativas;
 	
 	
+	
+	
+	protected Materia() {
+		super();
+	}
+
+
 	public Materia(String nombre,int anio) {
 		super();
 		this.nombre = nombre;
@@ -28,6 +48,17 @@ public class Materia {
 	}
 	
 	
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 	public Integer getAnio() {
 		return anio;
 	}
@@ -44,7 +75,7 @@ public class Materia {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Collection<Materia> getCorrelativas() {
+	public Collection<Materia> getCorrelativas() { 
 		return correlativas;
 	}
 	public void setCorrelativas(Collection<Materia> correlativas) {

@@ -2,7 +2,7 @@ package ar.edu.utn.link.correlativas.app;
 
 import ar.edu.utn.link.correlativas.model.Materia;
 
-public class MateriaRepetidaException extends Exception {
+public class MateriaRepetidaException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 	
